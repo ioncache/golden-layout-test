@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Golden Layout Test</title>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="author" content="OANDA">
+    <meta name="description" content="Test of adding toggle buttons to golden layout">
+    <meta name="viewport" content="width = device-width, user-scalable = no, initial-scale = 1.0">
+
+    <link rel='icon' href='favicon.ico' type='image/icon'>
+
+    <link rel="stylesheet" type="text/css" href="bower_components/golden-layout/src/css/goldenlayout-base.css" />
+    <link rel="stylesheet" type="text/css" href="bower_components/golden-layout/src/css/goldenlayout-light-theme.css" />
+    <link rel="stylesheet" type="text/css" href="styles/goldenlayout-oanda-theme.css" />
+
+    <style>
+      h2{
+        font: 14px Arial, sans-serif;
+        color: #000;
+        padding: 10px;
+        text-align: center;
+      }
+    </style>
+
+    <script src="bower_components/javascript-detect-element-resize/detect-element-resize.js"></script>
+    <script src="bower_components/lodash/dist/lodash.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/golden-layout/dist/goldenlayout.js"></script>
+
+    <!-- <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en,Intl.~locale.zh,Intl.~locale.de,Intl.~locale.es,Intl.~locale.fr,Intl.~locale.it,Intl.~locale.ja,Intl.~locale.pt,Intl.~locale.ru,es6|gated"></script> -->
+
+    <script>
+      let layoutConfig = {
+        content: [
+          {
+            name: 'row1',
+            type: 'row',
+            content:[
+              {
+                type: 'component',
+                componentName: 'testComponent',
+                componentState: { label: 'A' },
+                width: 1,
+                minWidth: 500
+              },
+              {
+                  name: 'column1',
+                  type: 'column',
+                  content:[
+                    {
+                      content: [
+                        {
+                          type: 'component',
+                          minHeight: 50,
+                          componentName: 'testComponent',
+                          componentState: { label: 'B' },
+                        }
+                      ],
+                      height: 1,
+                      name: 'column1 row1',
+                      type: 'row'
+                    },
+                    {
+                      content: [
+                        {
+                          type: 'component',
+                          minHeight: 150,
+                          componentName: 'testComponent',
+                          componentState: { label: 'C' },
+                        }
+                      ],
+                      height: 1,
+                      name: 'column1 row2',
+                      type: 'row'
+                    },
+                    {
+                      content: [
+                        {
+                          // minHeight: 500,
+                          type: 'component',
+                          componentName: 'testComponent',
+                          componentState: { label: 'D' },
+                        }
+                      ],
+                      name: 'column1 row3',
+                      type: 'row'
+                    }
+                  ]
+                }
+          ]
+        }],
+        dimensions: {
+          minItemHeight: 0,
+          minItemWidth: 0
+        },
+        settings: {
+          enableSplitterToggleButtons: true
+        }
+      };
+
+      let layout = new GoldenLayout(layoutConfig);
+
+      layout.registerComponent( 'testComponent', function( container, componentState ){
+          container.getElement().html( '<h2>' + componentState.label + '</h2>' );
+      });
+
+      layout.init();
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
