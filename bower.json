@@ -1,0 +1,24 @@
+{
+  "name": "golden-layout-test",
+  "homepage": "https://github.com/ioncache/golden-layout-test",
+  "authors": [
+    "Mark Jubenville <markj@oanda.com>"
+  ],
+  "description": "test for changes to golden layout",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "golden-layout": "git@github.com:oanda/golden-layout.git#f2ddf7856ee83268093a906b228349033923b352",
+    "jquery": "^3.2.1",
+    "javascript-detect-element-resize": "^0.5.3",
+    "lodash": "^4.17.4"
+  }
+}
