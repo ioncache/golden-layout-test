@@ -42,25 +42,21 @@
                 type: 'component',
                 componentName: 'testComponent',
                 componentState: { label: 'A' },
-                width: 1,
-                minWidth: 500
+                title: 'componentA',
+                minWidth: 300,
+                width: 1
               },
               {
                   name: 'column1',
                   type: 'column',
                   content:[
                     {
-                      content: [
-                        {
-                          type: 'component',
-                          minHeight: 50,
-                          componentName: 'testComponent',
-                          componentState: { label: 'B' },
-                        }
-                      ],
-                      height: 1,
-                      name: 'column1 row1',
-                      type: 'row'
+                      type: 'component',
+                      minHeight: 50,
+                      componentName: 'testComponent',
+                      componentState: { label: 'B' },
+                      title: 'componentB',
+                      height: 1
                     },
                     {
                       content: [
@@ -69,6 +65,28 @@
                           minHeight: 150,
                           componentName: 'testComponent',
                           componentState: { label: 'C' },
+                          title: 'componentC'
+                        },
+                        {
+                          type: 'column',
+                          content: [
+                            {
+                              type: 'component',
+                              minWidth: 100,
+                              componentName: 'testComponent',
+                              componentState: { label: 'F' },
+                              title: 'componentF',
+                              width: 1
+                            },
+                            {
+                              type: 'component',
+                              minHeight: 75,
+                              componentName: 'testComponent',
+                              componentState: { label: 'G' },
+                              title: 'componentG',
+                              width: 1
+                            },
+                          ]
                         }
                       ],
                       height: 1,
@@ -76,19 +94,22 @@
                       type: 'row'
                     },
                     {
-                      content: [
-                        {
-                          // minHeight: 500,
-                          type: 'component',
-                          componentName: 'testComponent',
-                          componentState: { label: 'D' },
-                        }
-                      ],
-                      name: 'column1 row3',
-                      type: 'row'
+                      minHeight: 300,
+                      type: 'component',
+                      componentName: 'testComponent',
+                      componentState: { label: 'D' },
+                      title: 'componentD',
                     }
                   ]
-                }
+                },
+                {
+                  type: 'component',
+                  componentName: 'testComponent',
+                  componentState: { label: 'E' },
+                  title: 'componentE',
+                  width: 1,
+                  minWidth: 200
+                },
           ]
         }],
         dimensions: {
@@ -102,7 +123,7 @@
 
       let layout = new GoldenLayout(layoutConfig);
 
-      layout.registerComponent( 'testComponent', function( container, componentState ){
+      layout.registerComponent( 'testComponent', function( container, componentState ) {
           container.getElement().html( '<h2>' + componentState.label + '</h2>' );
       });
 
